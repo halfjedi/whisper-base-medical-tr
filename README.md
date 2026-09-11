@@ -61,7 +61,13 @@ processor = WhisperProcessor.from_pretrained("models/checkpoint-7712")
 
 ## Bulgular
 
-Beş karşılaştırmalı deney yürütüldü; her biri LoRA rank'i ve eğitim verisine karıştırılan genel Türkçe verisinin (rehearsal) kaynağı değiştirilerek tasarlandı. Performans üç bağımsız eksende ölçüldü: ilaç (hedef görev), FLEURS (resmi/temiz Türkçe), Common Voice (çeşitli/gerçekçi Türkçe).
+Beş karşılaştırmalı deney yürütüldü; her biri LoRA rank'i ve eğitim verisine karıştırılan genel Türkçe verisinin (rehearsal) kaynağı değiştirilerek tasarlandı. Performans üç bağımsız eksende ölçüldü: ilaç (hedef görev), FLEURS (resmi/temiz Türkçe), Common Voice (çeşitli/gerçekçi Türkçe). Referans nokta, hiçbir ince ayar yapılmamış taban model:
+
+| | İlaç (norm.) | FLEURS (norm.) | CV (norm.) |
+|---|---|---|---|
+| **whisper-base (LoRA'sız, referans)** | %40,04 | %31,78 | %42,35 |
+
+Aşağıdaki tüm sonuçlar bu referansa göre okunmalı — örneğin Deney 5'in %19,53'lük ilaç WER'i tek başına vasat görünse de referansın (%40,04) yarısından azına iner:
 
 | Deney | Veri | LoRA | İlaç (norm.) | FLEURS (norm.) | CV (norm.) |
 |---|---|---|---|---|---|
