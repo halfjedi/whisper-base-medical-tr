@@ -1,0 +1,81 @@
+{
+  "twenties_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/twenties_female_feminine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/twenties_female_feminine_3.wav"
+  ],
+  "twenties_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/twenties_male_masculine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/twenties_male_masculine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/twenties_male_masculine_2.wav"
+  ],
+  "thirties_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/thirties_female_feminine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/thirties_female_feminine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/thirties_female_feminine_3.wav"
+  ],
+  "thirties_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/thirties_male_masculine_3.wav"
+  ],
+  "fourties_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fourties_female_feminine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fourties_female_feminine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fourties_female_feminine_2.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fourties_female_feminine_3.wav"
+  ],
+  "fourties_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fourties_male_masculine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fourties_male_masculine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fourties_male_masculine_3.wav"
+  ],
+  "fifties_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fifties_female_feminine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fifties_female_feminine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fifties_female_feminine_2.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fifties_female_feminine_3.wav"
+  ],
+  "fifties_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fifties_male_masculine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/fifties_male_masculine_1.wav"
+  ],
+  "sixties_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/sixties_female_feminine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/sixties_female_feminine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/sixties_female_feminine_2.wav"
+  ],
+  "sixties_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/sixties_male_masculine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/sixties_male_masculine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/sixties_male_masculine_2.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/sixties_male_masculine_3.wav"
+  ],
+  "seventies_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/seventies_female_feminine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/seventies_female_feminine_1.wav"
+  ],
+  "seventies_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/seventies_male_masculine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/seventies_male_masculine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/seventies_male_masculine_2.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/seventies_male_masculine_3.wav"
+  ],
+  "eighties_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/eighties_female_feminine_0.wav"
+  ],
+  "eighties_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/eighties_male_masculine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/eighties_male_masculine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/eighties_male_masculine_2.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/eighties_male_masculine_3.wav"
+  ],
+  "teens_female_feminine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/teens_female_feminine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/teens_female_feminine_1.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/teens_female_feminine_2.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/teens_female_feminine_3.wav"
+  ],
+  "teens_male_masculine": [
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/teens_male_masculine_0.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/teens_male_masculine_2.wav",
+    "/Users/ozanpatlar/Desktop/catpi/veri_uretimi/ses_referans/teens_male_masculine_3.wav"
+  ]
+}
