@@ -70,7 +70,7 @@ def profil_sec() -> tuple[str, str]:
     indeks %= len(klipler)
     _SON_KULLANILAN_INDEKS[anahtar] = indeks
     # profil_havuzu.json uretildigi makinenin MUTLAK yolunu iceriyor (orn.
-    # /Users/ozanpatlar/...) - baska bir makinede (Colab) bu yol yok. Sadece
+    # /Users/<kullanici>/...) - baska bir makinede (Colab) bu yol yok. Sadece
     # dosya adini alip, bu modulun yaninda duran ses_referans/ dizinine gore
     # yeniden kuruyoruz - hem Mac'te hem Colab'da dogru sonuc verir.
     dosya_adi = Path(klipler[indeks]).name

@@ -1,5 +1,8 @@
 # whisper-base-medical-tr
 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+
 OpenAI'nin **Whisper Base** konuşma tanıma modelinin, **LoRA (Low-Rank Adaptation)** tekniğiyle Türkçe tıbbi ön-görüşme konuşmalarını (hasta şikayetleri, semptomlar, ilaç isimleri dahil) tanıyacak şekilde özelleştirilmesi projesi.
 
 Amaç, günlük hayatta kullanılabilecek, güvenilir bir tıbbi konuşma tanıma sistemi ortaya koymaktı — bunu yaparken modelin genel Türkçe konuşma tanıma yeteneğini kaybetmemesi (*catastrophic forgetting*'den kaçınılması) kritik bir mühendislik kısıtı olarak ele alındı.
@@ -35,6 +38,14 @@ Ayrıca modelin genel Türkçe'yi unutmamasını sağlamak için hazır kaynakla
 - **İnce ayar yöntemi:** LoRA (r=32, alpha=64, dropout=0,05)
 - **En iyi checkpoint:** `checkpoint-7712` ([`models/checkpoint-7712/`](models/checkpoint-7712)) — bkz. Bulgular
 
+### Kurulum
+
+```bash
+git clone https://github.com/halfjedi/whisper-base-medical-tr.git
+cd whisper-base-medical-tr
+pip install -r requirements.txt
+```
+
 ### Kullanım
 
 ```python
@@ -45,6 +56,8 @@ base = WhisperForConditionalGeneration.from_pretrained("openai/whisper-base")
 model = PeftModel.from_pretrained(base, "models/checkpoint-7712")
 processor = WhisperProcessor.from_pretrained("models/checkpoint-7712")
 ```
+
+> Not: `models/checkpoint-7712` yerel bir depo yoludur — yukarıdaki kodun çalışması için önce depoyu klonlaman gerekir. Hugging Face Hub üzerinden doğrudan (`from_pretrained("kullanici/model-adi")`) dağıtım henüz yapılmadı.
 
 ## Bulgular
 
@@ -76,4 +89,4 @@ Detaylı deney raporları: [`docs/deney_ozetleri/`](docs/deney_ozetleri) ve [`do
 
 ## Lisans
 
-Bu depo bir staj/araştırma projesinin çıktısıdır. Taban model (Whisper Base) OpenAI'nin kendi lisansına tabidir. Üretilen sentetik veri ve LoRA ağırlıkları için lisans henüz belirlenmemiştir.
+Bu depodaki kod, SOCRATES-TR veri seti ve LoRA ağırlıkları [MIT lisansı](LICENSE) ile paylaşılmıştır. Taban model (Whisper Base) ayrıca OpenAI'nin kendi MIT lisansına tabidir.

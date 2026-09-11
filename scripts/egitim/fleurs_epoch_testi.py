@@ -8,7 +8,7 @@ Kullanim:
     python egitim/fleurs_epoch_testi.py <tumepoch_checkpoint_dizini>
 
 Ornek:
-    python egitim/fleurs_epoch_testi.py /Users/ozanpatlar/Downloads/ilac_kismi_87_colab_tumepoch
+    python egitim/fleurs_epoch_testi.py /path/to/checkpoint_dizini
 """
 
 import re

@@ -7,7 +7,7 @@ Kullanim:
     python egitim/ilac_epoch_testi.py <checkpoint_dizini> [adim_basina_epoch]
 
 Ornek:
-    python egitim/ilac_epoch_testi.py /Users/ozanpatlar/Downloads/drive-download-20260909T101502Z-1-001 557
+    python egitim/ilac_epoch_testi.py /path/to/checkpoint_dizini 557
 """
 
 import json

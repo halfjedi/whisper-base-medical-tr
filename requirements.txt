@@ -1,0 +1,10 @@
+torch
+torchaudio
+transformers>=4.46
+peft>=0.13
+datasets
+evaluate
+jiwer
+zeyrek
+requests
+librosa
