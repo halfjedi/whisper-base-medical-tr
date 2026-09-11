@@ -4,24 +4,30 @@ OpenAI'nin **Whisper Base** konuşma tanıma modelinin, **LoRA (Low-Rank Adaptat
 
 Amaç, günlük hayatta kullanılabilecek, güvenilir bir tıbbi konuşma tanıma sistemi ortaya koymaktı — bunu yaparken modelin genel Türkçe konuşma tanıma yeteneğini kaybetmemesi (*catastrophic forgetting*'den kaçınılması) kritik bir mühendislik kısıtı olarak ele alındı.
 
-## İçindekiler
+## 🩺 SOCRATES-TR — Veri Seti
 
-- [`models/checkpoint-7712/`](models/checkpoint-7712) — en iyi LoRA adaptörü (Deney 5, bkz. Bulgular)
-- [`data/`](data) — eğitim metni korpüsü, ses klipleri, split dosyaları
-- [`scripts/`](scripts) — veri üretim ve eğitim kodu
-- [`notebooks/`](notebooks) — Google Colab notebook'ları (ses üretimi, eğitim, test)
-- [`docs/`](docs) — deney raporları ve bulgular
-
-## Veri Seti
+Bu projenin en önemli çıktısı, kendi ürettiğimiz **SOCRATES-TR** veri setidir: Türkçe tıbbi ön-görüşme konuşmalarını kapsayan, hem metin hem sesli, tamamen sentetik (gerçek hasta kaydı içermeyen) bir korpüs. Bildiğimiz kadarıyla 18 farklı tıbbi dalı bir arada kapsayan, açık şekilde paylaşılan ilk Türkçe tıbbi konuşma veri seti.
 
 - **10.314 satır** sentetik hasta cümlesi — [`data/hasta_cumleleri.jsonl`](data/hasta_cumleleri.jsonl)
   - 18 tıbbi dal (dahiliye, kardiyoloji, nöroloji, ortopedi, kbb, göz, dermatoloji, pediatri, psikiyatri, kadın doğum, üroloji, romatoloji, endokrinoloji, enfeksiyon, diş, göğüs hastalıkları, gastroenteroloji, acil tıp) + ilaç + ortak (branşsız zaman/şiddet ifadeleri) kategorileri
-  - Klinik anamnez alma yöntemine dayalı **SOCRATES** çerçevesiyle (site, onset, character, radiation, associations, time_course, exacerbating/relieving, severity) kurgulandı
+  - Adını aldığı klinik anamnez alma yöntemi **SOCRATES** çerçevesiyle (site, onset, character, radiation, associations, time_course, exacerbating/relieving, severity) kurgulandı — her cümle bir şikayetin bu sekiz yönünden birini ifade eder
   - İki hasta personası: 42 yaşında sakin/kısa konuşan erkek, 67 yaşında detaylı/şikayetçi konuşan kadın
 - **6,29 saat** (5.512 klip, ortalama 4,11 sn/klip) sentetik konuşma sesi — [`data/sesler/`](data/sesler) (Git LFS)
   - Chatterbox Multilingual TTS ile, TÜİK'in yaş/cinsiyet nüfus dağılımına göre ağırlıklandırılmış 48 referans sesten ([`data/ses_referans/`](data/ses_referans)) üretildi
   - Çift katmanlı kalite kontrolü: süre eşiği (kelime başına ≥0,12sn) + Whisper-small geri-transkript doğrulaması (≥%70 eşleşme)
-- Ayrıca hazır kaynaklar kullanıldı: Google FLEURS `tr_tr` (2.864 satır) ve Common Voice 17 Türkçe (58.427 satırlık havuzdan TÜİK ağırlıklı seçim)
+  - Her cümle meta-sızıntı, yabancı kelime, kelime sayısı ve birebir-tekrar kontrolünden geçirildi
+
+Veri seti bu depoda `data/` altında tam olarak yer alıyor; nasıl üretildiğinin kod ve notebook'ları [`scripts/veri_uretimi/`](scripts/veri_uretimi) ve [`notebooks/`](notebooks) altında.
+
+Ayrıca modelin genel Türkçe'yi unutmamasını sağlamak için hazır kaynaklar da eğitime karıştırıldı: Google FLEURS `tr_tr` (2.864 satır) ve Common Voice 17 Türkçe (58.427 satırlık havuzdan TÜİK ağırlıklı seçim) — bunlar SOCRATES-TR'nin parçası değil, ayrı hazır veri setleridir.
+
+## İçindekiler
+
+- [`data/`](data) — **SOCRATES-TR**: eğitim metni korpüsü, ses klipleri, split dosyaları
+- [`models/checkpoint-7712/`](models/checkpoint-7712) — en iyi LoRA adaptörü (Deney 5, bkz. Bulgular)
+- [`scripts/`](scripts) — veri üretim ve eğitim kodu
+- [`notebooks/`](notebooks) — Google Colab notebook'ları (ses üretimi, eğitim, test)
+- [`docs/`](docs) — deney raporları ve bulgular
 
 ## Model
 
