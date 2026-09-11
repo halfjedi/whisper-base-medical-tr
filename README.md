@@ -27,7 +27,7 @@ Ayrıca modelin genel Türkçe'yi unutmamasını sağlamak için hazır kaynakla
 ## İçindekiler
 
 - [`data/`](data) — **SOCRATES-TR**: eğitim metni korpüsü, ses klipleri, split dosyaları
-- [`models/checkpoint-7712/`](models/checkpoint-7712) — en iyi LoRA adaptörü (Deney 5, bkz. Bulgular)
+- [`models/checkpoint-7712/`](models/checkpoint-7712) — Deney 5'in LoRA adaptörü (tek bir "en iyi model" yok, bkz. Bulgular)
 - [`scripts/`](scripts) — veri üretim ve eğitim kodu
 - [`notebooks/`](notebooks) — Google Colab notebook'ları (ses üretimi, eğitim, test)
 - [`docs/`](docs) — deney raporları ve bulgular
@@ -36,7 +36,7 @@ Ayrıca modelin genel Türkçe'yi unutmamasını sağlamak için hazır kaynakla
 
 - **Taban model:** [OpenAI Whisper Base](https://huggingface.co/openai/whisper-base) (74M parametre)
 - **İnce ayar yöntemi:** LoRA (r=32, alpha=64, dropout=0,05)
-- **En iyi checkpoint:** `checkpoint-7712` ([`models/checkpoint-7712/`](models/checkpoint-7712)) — bkz. Bulgular
+- **Bu depoda paylaşılan checkpoint:** `checkpoint-7712` (Deney 5 — genel tıbbi Türkçe'de en iyi, ilaç WER'inde Deney 3'e göre geride; bkz. Bulgular)
 
 ### Kurulum
 
@@ -65,17 +65,22 @@ Beş karşılaştırmalı deney yürütüldü; her biri LoRA rank'i ve eğitim v
 
 | Deney | Veri | LoRA | İlaç (norm.) | FLEURS (norm.) | CV (norm.) |
 |---|---|---|---|---|---|
-| 1 — rehearsal yok | 3.910, sadece ilaç | r=64/128 | val %8,99 | %68,74 | — |
+| 1 — rehearsal yok *(katastrofik unutma)* | 3.910, sadece ilaç | r=64/128 | val %8,99 | %68,74 | — |
 | 2 — düşük rank + FLEURS | 4.910 (+%20 FL) | r=16/32 | val %10,71 | %37,25 | — |
-| 3 — Common Voice ile büyütme | 8.910 (+%56 CV) | r=16/32 | test %7,50 | %45,31 | %32,51 |
+| 3 — Common Voice ile büyütme | 8.910 (+%56 CV) | r=16/32 | **test %7,50 🏆 en iyi ilaç** | %45,31 | %32,51 |
 | 4 — FLEURS+CV karma | 8.910 (FL+CV) | r=32/64 | test %8,04 | %31,78 | %35,30 |
-| **5 — genişletilmiş çok-dallı rehearsal** | **10.314, 18 dal** | r=32/64 | **%19,53** | **%24,32** | **%30,33** |
+| 5 — genişletilmiş çok-dallı rehearsal | 10.314, 18 dal | r=32/64 | %19,53 | **%24,32 🏆 en iyi FLEURS** | **%30,33 🏆 en iyi CV** |
+
+Tek bir "en iyi model" yok — hangisi daha uygun, önceliğe göre değişiyor:
+
+- **İlaç adı tanıma önceliğiyse:** Deney 3 (test norm. %7,50) — katastrofik unutma yaşamayan deneyler arasında (2/3/4/5) en iyi ilaç WER'i bu deneyde elde edildi, Deney 4'ü (%8,04) bile geçiyor.
+- **Genel tıbbi Türkçe (FLEURS/CV) + makul ilaç performansı önceliğiyse:** Deney 5 / `checkpoint-7712` (bu depoda paylaşılan model) — FLEURS ve CV'de en iyi sonuçlar, ama ilaç WER'i Deney 3/4'e göre belirgin şekilde geride (%19,53).
 
 **Ana bulgular:**
 
 1. **İlaç adı ezberi, LoRA'nın en büyük kazancı:** Referans model (LoRA'sız) ilaç isimlerinin %60'ını (140/233) tamamen kaçırırken, ince ayarlı model bu oranı %93,1 tam doğruluğa çıkardı.
 2. **Genel Türkçe'nin korunması tek bir kaynakla mümkün değil:** Rehearsal'sız eğitim (Deney 1) ciddi/kalıcı unutmaya yol açtı. Tek kaynaklı rehearsal (Deney 2: sadece FLEURS, Deney 3: sadece Common Voice) bir eksende işe yarayıp diğerine transfer olmadı. FLEURS+CV karışımı (Deney 4) ilk kez her iki dağılımı birden referansın üzerine çıkardı.
-3. **Deney 5 — önemli bir trade-off:** Metin korpüsü 10.314 satıra çıkarılıp 18 tıbbi dala yayılınca (yalnızca ilaç değil), model genel tıbbi Türkçe'yi (FLEURS, Common Voice) daha iyi öğrendi, **ancak ilaç adı tanıma performansından belirgin ölçüde ödün verdi** (Deney 4'ün %8,04'üne kıyasla %19,53). **Bu, kabul edilebilir bir trade-off olarak değerlendirilmedi** — ilaç adı tanıma projenin öncelikli hedefi. Eğitim verisindeki ilaç/genel-dal oranının bu kaybı önleyecek şekilde yeniden dengelenmesi bir sonraki adım olarak planlanıyor.
+3. **Deney 5 — önemli bir trade-off:** Metin korpüsü 10.314 satıra çıkarılıp 18 tıbbi dala yayılınca (yalnızca ilaç değil), model genel tıbbi Türkçe'yi (FLEURS, Common Voice) daha iyi öğrendi, **ancak ilaç adı tanıma performansından belirgin ölçüde ödün verdi** (Deney 3'ün %7,50'sine kıyasla %19,53). **Bu, kabul edilebilir bir trade-off olarak değerlendirilmedi** — ilaç adı tanıma projenin öncelikli hedefi. Eğitim verisindeki ilaç/genel-dal oranının bu kaybı önleyecek şekilde yeniden dengelenmesi bir sonraki adım olarak planlanıyor.
 4. **Quantization bu ölçekte işe yaramadı:** İki platformda (Mac/qnnpack, Colab/bitsandbytes) denendi, ikisinde de hem hız hem WER kaybı gözlendi.
 
 Detaylı deney raporları: [`docs/deney_ozetleri/`](docs/deney_ozetleri) ve [`docs/rapor_whisper_medikal_tr.html`](docs/rapor_whisper_medikal_tr.html).
