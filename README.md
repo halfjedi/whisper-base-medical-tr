@@ -2,8 +2,6 @@
 
 OpenAI'nin **Whisper Base** konuşma tanıma modelinin, **LoRA (Low-Rank Adaptation)** tekniğiyle Türkçe tıbbi ön-görüşme konuşmalarını (hasta şikayetleri, semptomlar, ilaç isimleri dahil) tanıyacak şekilde özelleştirilmesi projesi.
 
-Amaç, günlük hayatta kullanılabilecek, güvenilir bir tıbbi konuşma tanıma sistemi ortaya koymaktı — bunu yaparken modelin genel Türkçe konuşma tanıma yeteneğini kaybetmemesi (*catastrophic forgetting*'den kaçınılması) kritik bir mühendislik kısıtı olarak ele alındı.
-
 ## İçindekiler
 
 - [`models/checkpoint-7712/`](models/checkpoint-7712) — en iyi LoRA adaptörü (Deney 5, bkz. Bulgular)
